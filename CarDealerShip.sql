@@ -1,0 +1,44 @@
+DROP DATABASE IF EXISTS CarDealerShip;
+
+CREATE DATABASE IF NOT EXISTS CarDealerShip;
+USE CarDealerShip;
+
+CREATE TABLE Dealerships (
+DealerShipID
+int AUTO_INCREMENT,
+Name VARCHAR(50),
+Address VARCHAR(50),
+Phone VARCHAR(15),
+PRIMARY KEY (DealerShipID)
+);
+
+
+CREATE TABLE Vehicles(
+VIN VARCHAR(30),
+Color VARCHAR(50),
+Make VARCHAR(20),
+Sold BOOLEAN,
+PRIMARY KEY (VIN)
+);
+
+
+CREATE TABLE Inventory(
+DealerShipID INT,
+VIN VARCHAR(30),
+PRIMARY KEY (VIN)
+);
+
+
+CREATE TABLE SalesContracts(
+ContractID INT AUTO_INCREMENT,
+CustomerName VARCHAR(100),
+DealerID INT,
+SalesDate DATE,
+EndSales DATE,
+VIN VARCHAR(30),
+FOREIGN KEY(VIN) REFERENCES Vehicles(VIN),
+PRIMARY KEY(ContractID)
+);
+
+
+
